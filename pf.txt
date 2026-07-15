@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DA Portfolio Wireframe</title>
+<style>
+  /* =============================================
+     전체 스타일 — 수정하려면 여기 값을 바꾸세요
+     ============================================= */
+  :root {
+    --bg: #F4F3F1;
+    --card: #FFFFFF;
+    --card-alt: #EDEDEB;
+    --header: #2B2B2B;
+    --text-dark: #2B2B2B;
+    --text-mid: #5A5A5A;
+    --text-light: #8A8A8A;
+    --border: #D8D6D3;
+    --accent-bg: #E8E6E3;
+    --tag: #D0CEC9;
+    --issue-bg: #EDECEA;
+    --issue-border: #5C5C5C;
+    --funnel1: #2B2B2B;
+    --funnel2: #3D3D3D;
+    --funnel3: #525252;
+    --funnel4: #686868;
+    --funnel5: #3A6BC9;  /* Lead — 포인트 컬러 */
+    --ss-bg: #EFEEEC;
+    --font: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+    --mono: 'Courier New', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: #DCDAD7;
+    color: var(--text-dark);
+    padding: 32px 24px;
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 28px;
+    letter-spacing: 2px;
+    border-bottom: 1px solid #BBB;
+    padding-bottom: 8px;
+  }
+
+  /* ── 슬라이드 컨테이너 ── */
+  .slide {
+    background: var(--bg);
+    margin-bottom: 40px;
+    border: 1px solid #C0BEB9;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 960px;
+  }
+
+  /* ── 슬라이드 번호 레이블 ── */
+  .slide-label {
+    font-size: 10px;
+    color: #888;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+    font-family: var(--mono);
+  }
+
+  /* ── 헤더 바 ── */
+  .slide-header {
+    background: var(--header);
+    color: #FFF;
+    padding: 10px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .slide-num {
+    font-size: 18px;
+    font-weight: bold;
+    min-width: 32px;
+  }
+  .slide-divider {
+    width: 2px;
+    height: 22px;
+    background: #666;
+    flex-shrink: 0;
+  }
+  .slide-title {
+    font-size: 14px;
+    font-weight: bold;
+    flex: 1;
+  }
+  .slide-meta {
+    font-size: 9px;
+    color: #999;
+    text-align: right;
+    white-space: nowrap;
+  }
+
+  /* ── Tool 바 ── */
+  .tool-bar {
+    padding: 7px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .tool-label {
+    font-size: 9px;
+    font-weight: bold;
+    color: var(--text-light);
+  }
+  .tool-tag {
+    background: var(--tag);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 9px;
+    color: var(--text-mid);
+  }
+
+  /* ── 목적 박스 ── */
+  .purpose-box {
+    margin: 10px 16px 0;
+    background: var(--accent-bg);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 12px;
+  }
+  .purpose-label {
+    font-size: 8px;
+    font-weight: bold;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+    margin-bottom: 3px;
+  }
+  .purpose-text {
+    font-size: 10px;
+    color: var(--text-dark);
+  }
+
+  /* ── 2컬럼 바디 ── */
+  .body-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    padding: 10px 16px 12px;
+  }
+  .col-left { padding-right: 10px; border-right: 1px solid var(--border); }
+  .col-right { padding-left: 10px; }
+
+  /* ── 3컬럼 바디 (CJENM용) ── */
+  .body-3col {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    padding: 10px 16px 12px;
+  }
+  .col-mid { padding: 0 10px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+  .col-right-3 { padding-left: 10px; }
+
+  /* ── 섹션 라벨 ── */
+  .sec-label {
+    font-size: 8.5px;
+    font-weight: bold;
+    color: var(--text-light);
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    margin-top: 2px;
+  }
+
+  /* ── 카드 ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .card.alt { background: var(--card-alt); }
+  .card-title {
+    font-size: 10px;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin-bottom: 3px;
+  }
+  .card-desc {
+    font-size: 9px;
+    color: var(--text-mid);
+  }
+
+  /* ── 퍼널 스텝 ── */
+  .funnel-step {
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 4px;
+    color: #FFF;
+    position: relative;
+  }
+  .funnel-step-title { font-size: 11px; font-weight: bold; margin-bottom: 2px; }
+  .funnel-step-sub   { font-size: 8.5px; color: #CCC; margin-bottom: 5px; }
+  .funnel-tags { display: flex; flex-wrap: wrap; gap: 3px; }
+  .funnel-tag {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    padding: 1px 7px;
+    font-size: 8px;
+    color: #FFF;
+  }
+  .funnel-arrow {
+    text-align: center;
+    color: var(--text-light);
+    font-size: 11px;
+    margin: 1px 0;
+  }
+
+  /* ── 아이콘 카드 ── */
+  .icon-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 7px 10px;
+    margin-bottom: 5px;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .icon-card.alt { background: var(--card-alt); }
+  .icon-cell {
+    font-size: 13px;
+    min-width: 20px;
+    padding-top: 1px;
+  }
+  .icon-card-title { font-size: 10px; font-weight: bold; color: var(--text-dark); margin-bottom: 2px; }
+  .icon-card-desc  { font-size: 8.5px; color: var(--text-mid); }
+
+  /* ── 이슈 해결 카드 ── */
+  .issue-card {
+    background: var(--issue-bg);
+    border: 1.5px solid var(--issue-border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  .issue-badge {
+    display: inline-block;
+    background: var(--issue-border);
+    color: #FFF;
+    font-size: 8px;
+    font-weight: bold;
+    border-radius: 3px;
+    padding: 1px 7px;
+    margin-right: 6px;
+  }
+  .issue-title { display: inline; font-size: 10px; font-weight: bold; color: var(--text-dark); }
+  .issue-desc  { font-size: 8.5px; color: var(--text-mid); margin-top: 4px; }
+
+  /* ── 스크린샷 박스 ── */
+  .ss-box {
+    background: var(--ss-bg);
+    border: 1.5px dashed var(--border);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 9px;
+    font-style: italic;
+    min-height: 70px;
+    margin-bottom: 5px;
+  }
+
+  /* ── 탭 바 ── */
+  .tab-bar { display: flex; gap: 5px; margin-bottom: 7px; }
+  .tab {
+    background: var(--tag);
+    border-radius: 4px;
+    padding: 3px 8px;
+    font-size: 8.5px;
+    color: var(--text-mid);
+  }
+  .tab.active { background: var(--header); color: #FFF; font-weight: bold; }
+
+  /* ── 인사이트 카드 ── */
+  .insight-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .insight-top { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 4px; }
+  .insight-num {
+    background: var(--header);
+    color: #FFF;
+    border-radius: 5px;
+    padding: 4px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    white-space: nowrap;
+    min-width: 56px;
+    text-align: center;
+  }
+  .insight-body { flex: 1; }
+  .insight-tag  { font-size: 10px; font-weight: bold; color: var(--text-dark); margin-bottom: 3px; }
+  .insight-desc { font-size: 8.5px; color: var(--text-mid); }
+  .insight-footer {
+    font-size: 8.5px;
+    color: var(--text-light);
+    font-style: italic;
+    border-top: 1px solid var(--border);
+    padding-top: 4px;
+    margin-top: 2px;
+  }
+
+  /* ── 3단 헤더 ── */
+  .col-header {
+    border-radius: 4px;
+    padding: 6px;
+    text-align: center;
+    color: #FFF;
+    font-size: 10.5px;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  /* ── CJENM 가설/결과 블록 ── */
+  .cj-section-label { font-size: 8.5px; font-weight: bold; color: var(--text-light); margin: 8px 0 3px; }
+  .cj-text { font-size: 9px; color: var(--text-mid); margin-bottom: 4px; line-height: 1.5; }
+  .cj-divider { border: none; border-top: 1px solid var(--border); margin: 6px 0; }
+  .cj-badge {
+    display: inline-block;
+    border-radius: 3px;
+    padding: 1px 7px;
+    font-size: 8px;
+    font-weight: bold;
+    color: #FFF;
+    margin-right: 5px;
+  }
+  .cj-step-title { display: inline; font-size: 9.5px; font-weight: bold; color: var(--text-dark); }
+  .cj-step-desc { font-size: 8.5px; color: var(--text-mid); margin-top: 3px; line-height: 1.5; }
+
+  /* ── 결과 수치 박스 ── */
+  .result-num-box {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 8px 10px;
+    margin: 6px 0;
+    background: var(--card);
+    text-align: center;
+  }
+  .result-num { font-size: 22px; font-weight: bold; color: #3A6BC9; }
+  .result-num-label { font-size: 9px; color: var(--text-mid); margin-top: 2px; }
+  .result-num-basis { font-size: 8px; color: var(--text-light); font-style: italic; margin-top: 2px; }
+
+  /* ── 대시보드 KPI 블록 ── */
+  .db-funnel-block {
+    border-left: 3px solid var(--border);
+    padding-left: 8px;
+    margin-bottom: 6px;
+  }
+  .db-funnel-title {
+    font-size: 9.5px;
+    font-weight: bold;
+    color: var(--text-dark);
+    margin-bottom: 2px;
+  }
+  .db-kpi-row { font-size: 8.5px; color: var(--text-mid); margin-bottom: 1px; }
+  .db-kpi-main { color: var(--text-dark); font-weight: bold; }
+  .db-kpi-sub  { color: var(--text-light); }
+
+  /* 수정 가이드 주석 색 */
+  .edit-guide {
+    font-size: 9px;
+    color: #aaa;
+    font-style: italic;
+    margin-bottom: 4px;
+  }
+</style>
+</head>
+<body>
+
+<h1>DA PORTFOLIO — WIREFRAME v2 (5 SLIDES) · 직접 수정 가능</h1>
+
+<!-- ============================================================
+     SLIDE 01 · 삼성바이오로직스 ① KPI 퍼널 정의 & GTM 태깅
+     수정: .funnel-step 각 블록의 텍스트, .funnel-tag 내용
+     ============================================================ -->
+<div class="slide-label">SLIDE 01 / 삼성바이오로직스 ① KPI 퍼널 정의 & GTM 태깅</div>
+<div class="slide">
+  <!-- 헤더 -->
+  <div class="slide-header">
+    <span class="slide-num">01</span>
+    <div class="slide-divider"></div>
+    <!-- 수정: 제목 텍스트 -->
+    <span class="slide-title">삼성바이오로직스(SBL) &nbsp; ① &nbsp; KPI 퍼널 정의 & GTM 태깅</span>
+    <span class="slide-meta">삼성바이오로직스 (엑셀리언트) · 2026.03 – 2026.05</span>
+  </div>
+
+  <!-- Tool 바 -->
+  <div class="tool-bar">
+    <span class="tool-label">Tool</span>
+    <!-- 수정: tool-tag 추가/삭제 가능 -->
+    <span class="tool-tag">GA4</span>
+    <span class="tool-tag">GTM</span>
+    <span class="tool-tag">Looker Studio</span>
+  </div>
+
+  <!-- 목적 박스 -->
+  <div class="purpose-box">
+    <div class="purpose-label">프로젝트 목적</div>
+    <!-- 수정: 목적 텍스트 -->
+    <div class="purpose-text">Newsroom을 통해 사용자가 얼마나 많은 관심을 갖고, 최종적으로 리드 전환까지 이어지는지 측정하기 위한 KPI 퍼널 정의 및 데이터 수집 환경 구축</div>
+  </div>
+
+  <!-- 2컬럼 바디 -->
+  <div class="body-2col">
+
+    <!-- 왼쪽: KPI 퍼널 -->
+    <div class="col-left">
+      <div class="sec-label">KPI 퍼널 정의</div>
+
+      <!-- ① User information -->
+      <div class="funnel-step" style="background:var(--funnel1);">
+        <div class="funnel-step-title">① User information</div>
+        <div class="funnel-step-sub">사용자 기본 정보 및 행동 특성</div>
+        <div class="funnel-tags">
+          <span class="funnel-tag">디바이스 (PC/MO)</span>
+          <span class="funnel-tag">브라우저</span>
+          <span class="funnel-tag">언어</span>
+          <span class="funnel-tag">접속 국가/도시</span>
+          <span class="funnel-tag">접속 시간</span>
+          <span class="funnel-tag">신규/재방문</span>
+          <span class="funnel-tag">참여율</span>
+          <span class="funnel-tag">이탈률</span>
+        </div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+
+      <!-- ② Website Traffic -->
+      <div class="funnel-step" style="background:var(--funnel2);">
+        <div class="funnel-step-title">② Website Traffic</div>
+        <div class="funnel-step-sub">채널 및 소스/매체 기준 사용자 유입 경로 및 트래픽 구조</div>
+        <div class="funnel-tags">
+          <span class="funnel-tag">사용자 수</span>
+          <span class="funnel-tag">조회수</span>
+          <span class="funnel-tag">채널별 방문 행태</span>
+          <span class="funnel-tag">랜딩 페이지</span>
+          <span class="funnel-tag">유입 키워드</span>
+          <span class="funnel-tag">CTR</span>
+          <span class="funnel-tag">노출수</span>
+          <span class="funnel-tag">Avg. Position</span>
+        </div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+
+      <!-- ③ Contents -->
+      <div class="funnel-step" style="background:var(--funnel3);">
+        <div class="funnel-step-title">③ Contents</div>
+        <div class="funnel-step-sub">콘텐츠별 조회 및 사용자 반응 기반 주요 콘텐츠 성과</div>
+        <div class="funnel-tags">
+          <span class="funnel-tag">콘텐츠 활성 사용자</span>
+          <span class="funnel-tag">클릭수</span>
+          <span class="funnel-tag">조회수</span>
+          <span class="funnel-tag">발행일자</span>
+          <span class="funnel-tag">카테고리</span>
+          <span class="funnel-tag">Title</span>
+        </div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+
+      <!-- ④ Engagement -->
+      <div class="funnel-step" style="background:var(--funnel4);">
+        <div class="funnel-step-title">④ Engagement</div>
+        <div class="funnel-step-sub">콘텐츠 소비 시간 및 사용자 행동 기반 참여 수준</div>
+        <div class="funnel-tags">
+          <span class="funnel-tag">스크롤 깊이</span>
+          <span class="funnel-tag">재방문율</span>
+          <span class="funnel-tag">평균 참여시간</span>
+          <span class="funnel-tag">페이지당 이벤트수</span>
+          <span class="funnel-tag">콘텐츠 CTR</span>
+          <span class="funnel-tag">PDF 다운로드</span>
+        </div>
+      </div>
+      <div class="funnel-arrow">↓</div>
+
+      <!-- ⑤ Lead -->
+      <div class="funnel-step" style="background:var(--funnel5);">
+        <div class="funnel-step-title">⑤ Lead</div>
+        <div class="funnel-step-sub">Contact Us 유도부터 리드 제출까지 전환 흐름 및 성과</div>
+        <div class="funnel-tags">
+          <span class="funnel-tag">KPI Funnel</span>
+          <span class="funnel-tag">Contact Us 클릭수</span>
+          <span class="funnel-tag">완료수</span>
+          <span class="funnel-tag">CTR</span>
+          <span class="funnel-tag">CVR</span>
+          <span class="funnel-tag">폼 정보</span>
+        </div>
+      </div>
+    </div><!-- /col-left -->
+
+    <!-- 오른쪽: GTM 태깅 -->
+    <div class="col-right">
+      <div class="sec-label">GTM 태깅 진행</div>
+
+      <div class="icon-card">
+        <div class="icon-cell">≡</div>
+        <div>
+          <div class="icon-card-title">태깅 필요 여부 분류</div>
+          <div class="icon-card-desc">트래킹 리스트 기반으로 GA4 기본 수집 지표 vs GTM 태깅 필요 지표 분류 (O/△/X)</div>
+        </div>
+      </div>
+
+      <div class="icon-card alt">
+        <div class="icon-cell">◆</div>
+        <div>
+          <div class="icon-card-title">이벤트 설계 & 태그 구성</div>
+          <div class="icon-card-desc">콘텐츠 클릭, 리드폼 제출 등 커스텀 이벤트 설계 및 GA4 Event 태그 구성</div>
+        </div>
+      </div>
+
+      <div class="icon-card">
+        <div class="icon-cell">✓</div>
+        <div>
+          <div class="icon-card-title">트리거 설정 & 배포</div>
+          <div class="icon-card-desc">영역별 Firing Trigger 설정 후 GTM 배포, 데이터 수집 여부 모니터링</div>
+        </div>
+      </div>
+
+      <!-- 이슈 해결 카드 -->
+      <div class="issue-card">
+        <div>
+          <span class="issue-badge">이슈 해결</span>
+          <span class="issue-title">리드폼 제출 GTM 추적 불가 해결</span>
+        </div>
+        <div class="issue-desc">리드폼 제출 시 CRM 전송 팝업으로 인해 GTM 추적 불가 → 개발자 협업으로 커스텀 이벤트 직접 개발 후 GA4 태그 연동으로 정상 수집 해결</div>
+      </div>
+
+      <!-- 스크린샷 박스 -->
+      <div class="sec-label" style="margin-top:6px;">GTM 태깅 화면</div>
+      <!-- 수정: ss-box 높이는 min-height로 조절 -->
+      <div class="ss-box" style="min-height:100px;">📸 GTM Tag Manager 태깅 화면 스크린샷 첨부</div>
+    </div><!-- /col-right -->
+
+  </div><!-- /body-2col -->
+</div><!-- /slide -->
+
+
+<!-- ============================================================
+     SLIDE 02 · 삼성바이오로직스 ② 대시보드 설계 & Looker Studio 구현
+     수정: .db-funnel-block 각 블록의 KPI/보조지표 텍스트
+     ============================================================ -->
+<div class="slide-label">SLIDE 02 / 삼성바이오로직스 ② 대시보드 설계 & Looker Studio 구현</div>
+<div class="slide">
+  <div class="slide-header">
+    <span class="slide-num">01</span>
+    <div class="slide-divider"></div>
+    <span class="slide-title">삼성바이오로직스(SBL) &nbsp; ② &nbsp; 대시보드 설계 & Looker Studio 구현</span>
+    <span class="slide-meta">삼성바이오로직스 (엑셀리언트) · 2026.03 – 2026.05</span>
+  </div>
+  <div class="tool-bar">
+    <span class="tool-label">Tool</span>
+    <span class="tool-tag">Looker Studio</span>
+    <span class="tool-tag">GA4</span>
+    <span class="tool-tag">GTM</span>
+  </div>
+
+  <div class="body-2col">
+
+    <!-- 왼쪽: 대시보드 설계안 -->
+    <div class="col-left">
+      <div class="sec-label">대시보드 설계안</div>
+      <div class="tab-bar">
+        <span class="tab active">Overview</span>
+        <span class="tab">User & Traffic</span>
+        <span class="tab">Contents</span>
+        <span class="tab">Engagement & Lead</span>
+      </div>
+
+      <!-- 설계 설명 -->
+      <div class="card" style="margin-bottom:8px;">
+        <div class="card-title">설계 방향</div>
+        <div class="card-desc">수집된 트래킹 리스트를 기반으로 각 퍼널별 KPI 지표와 보조지표를 함께 구성하여, 담당자가 핵심 수치와 맥락 지표를 동시에 모니터링할 수 있도록 설계</div>
+      </div>
+
+      <!-- ① User information -->
+      <div class="db-funnel-block" style="border-left-color: var(--funnel1);">
+        <div class="db-funnel-title">① User information</div>
+        <div class="db-kpi-row"><span class="db-kpi-main">KPI:</span> <span class="db-kpi-sub">전체 사용자 수, 활성 사용자 수, 신규/재방문 비율</span></div>
+        <div class="db-kpi-row"><span class="db-kpi-main">보조:</span> <span class="db-kpi-sub">디바이스별 비중, 접속 국가/도시, 참여율, 이탈률, 브라우저·언어</span></div>
+      </div>
+
+      <!-- ② Website Traffic -->
+      <div class="db-funnel-block" style="border-left-color: var(--funnel2);">
+        <div class="db-funnel-title">② Website Traffic</div>
+        <div class="db-kpi-row"><span class="db-kpi-main">KPI:</span> <span class="db-kpi-sub">채널별 방문수, 조회수, 유입 소스/매체별 세션</span></div>
+        <div class="db-kpi-row"><span class="db-kpi-main">보조:</span> <span class="db-kpi-sub">랜딩 페이지, 유입 키워드, CTR, 노출수, Avg. Position (GSC 연동)</span></div>
+      </div>
+
+      <!-- ③ Contents -->
+      <div class="db-funnel-block" style="border-left-color: var(--funnel3);">
+        <div class="db-funnel-title">③ Contents</div>
+        <div class="db-kpi-row"><span class="db-kpi-main">KPI:</span> <span class="db-kpi-sub">콘텐츠 클릭수, 콘텐츠 조회수, 콘텐츠 활성 사용자 수</span></div>
+        <div class="db-kpi-row"><span class="db-kpi-main">보조:</span> <span class="db-kpi-sub">카테고리별 성과, 발행일자, Title별 조회수</span></div>
+      </div>
+
+      <!-- ④ Engagement -->
+      <div class="db-funnel-block" style="border-left-color: var(--funnel4);">
+        <div class="db-funnel-title">④ Engagement</div>
+        <div class="db-kpi-row"><span class="db-kpi-main">KPI:</span> <span class="db-kpi-sub">평균 참여시간, 재방문율, 콘텐츠 CTR</span></div>
+        <div class="db-kpi-row"><span class="db-kpi-main">보조:</span> <span class="db-kpi-sub">스크롤 깊이, 페이지당 이벤트수, PDF 다운로드 수, PDF 폼 내 버튼 클릭</span></div>
+      </div>
+
+      <!-- ⑤ Lead -->
+      <div class="db-funnel-block" style="border-left-color: var(--funnel5);">
+        <div class="db-funnel-title">⑤ Lead</div>
+        <div class="db-kpi-row"><span class="db-kpi-main">KPI:</span> <span class="db-kpi-sub">KPI Funnel (Newsroom → Contact Us → 리드 폼 제출), Contact Us CVR</span></div>
+        <div class="db-kpi-row"><span class="db-kpi-main">보조:</span> <span class="db-kpi-sub">Contact Us 클릭수, 완료수, CTR, 폼 정보 (회사유형·직급·국가·유입경로)</span></div>
+      </div>
+    </div><!-- /col-left -->
+
+    <!-- 오른쪽: Looker Studio 구현 스크린샷 -->
+    <div class="col-right">
+      <div class="sec-label">Looker Studio 구현</div>
+      <div class="ss-box" style="min-height:140px;">📸 Overview 대시보드 화면 스크린샷 첨부</div>
+      <div class="ss-box" style="min-height:140px;">📸 Engagement &amp; Lead 퍼널 화면 스크린샷 첨부</div>
+    </div>
+
+  </div>
+</div><!-- /slide -->
+
+
+<!-- ============================================================
+     SLIDE 03 · Kia OneApp ① 벤치마킹 기반 KPI 정의
+     수정: 벤치마킹 카드 설명, KPI 결과 불릿
+     ============================================================ -->
+<div class="slide-label">SLIDE 03 / Kia OneApp ① 벤치마킹 기반 KPI 정의</div>
+<div class="slide">
+  <div class="slide-header">
+    <span class="slide-num">02</span>
+    <div class="slide-divider"></div>
+    <span class="slide-title">Kia OneApp KPI 체계 수립 &nbsp; ① &nbsp; 벤치마킹 기반 KPI 정의</span>
+    <span class="slide-meta">이노션 · 2025.06 – 2025.09</span>
+  </div>
+  <div class="tool-bar">
+    <span class="tool-label">Tool</span>
+    <span class="tool-tag">GA4</span>
+    <span class="tool-tag">Looker Studio</span>
+    <span class="tool-tag">Spreadsheet</span>
+  </div>
+  <div class="purpose-box">
+    <div class="purpose-label">프로젝트 목적</div>
+    <div class="purpose-text">Kia OneApp(KR) 및 OneWeb(EU) 운영 전략 수립을 위해 타 모빌리티 산업 벤치마킹을 통한 KPI 체계를 신규 정의</div>
+  </div>
+
+  <div class="body-2col">
+    <div class="col-left">
+      <div class="sec-label">벤치마킹 접근법</div>
+      <div class="icon-card">
+        <div class="icon-cell">🔍</div>
+        <div>
+          <div class="icon-card-title">타 모빌리티 앱 분석</div>
+          <div class="icon-card-desc">현대, BMW, 테슬라 등 글로벌 모빌리티 앱 구성 및 KPI 관리 방식 조사</div>
+        </div>
+      </div>
+      <div class="icon-card alt">
+        <div class="icon-cell">📊</div>
+        <div>
+          <div class="icon-card-title">런칭 서비스 트렌드 파악</div>
+          <div class="icon-card-desc">최신 런칭된 커넥티드카·모빌리티 서비스 지표 및 운영 방향 참고</div>
+        </div>
+      </div>
+      <div class="icon-card">
+        <div class="icon-cell">≡</div>
+        <div>
+          <div class="icon-card-title">KPI·PI 신규 정의</div>
+          <div class="icon-card-desc">벤치마킹 기반으로 Kia OneApp 운영 전략에 맞는 KPI·PI 구조 설계 및 확정</div>
+        </div>
+      </div>
+      <div class="card alt" style="margin-top:4px;">
+        <div class="card-title" style="font-size:9px;color:var(--text-light);margin-bottom:4px;">적용 범위</div>
+        <div style="display:flex;gap:6px;">
+          <span style="background:var(--header);color:#FFF;border-radius:4px;padding:2px 10px;font-size:8.5px;font-weight:bold;">Kia OneApp (KR)</span>
+          <span style="background:var(--text-mid);color:#FFF;border-radius:4px;padding:2px 10px;font-size:8.5px;font-weight:bold;">Kia OneWeb (EU)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-right">
+      <div class="sec-label">KPI 체계 수립 결과</div>
+      <div class="card" style="margin-bottom:8px;">
+        <div style="display:inline-block;background:var(--header);color:#FFF;border-radius:3px;padding:1px 8px;font-size:8px;font-weight:bold;margin-bottom:5px;">Kia OneApp (KR)</div>
+        <div class="card-desc" style="line-height:1.7;">
+          • 앱 사용자 수 (신규·재방문)<br>
+          • 세션 수 및 참여율<br>
+          • 컴포넌트별 클릭 점유율<br>
+          • 서비스 전환수 (기아샵, 커넥트스토어 등)<br>
+          • 업데이트 버튼 클릭 패턴
+        </div>
+      </div>
+      <div class="card">
+        <div style="display:inline-block;background:var(--text-mid);color:#FFF;border-radius:3px;padding:1px 8px;font-size:8px;font-weight:bold;margin-bottom:5px;">Kia OneWeb (EU)</div>
+        <div class="card-desc" style="line-height:1.7;">
+          • GA4 기반 글로벌 웹 트래픽 지표<br>
+          • 국가별 유입 채널 성과 비교<br>
+          • 콘텐츠 카테고리별 참여 지표<br>
+          • KPI 벤치마킹 비교 산출 방식
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- /slide -->
+
+
+<!-- ============================================================
+     SLIDE 04 · Kia OneApp ② 월간 분석 리포트
+     수정: 인사이트 카드 수치·설명
+     ============================================================ -->
+<div class="slide-label">SLIDE 04 / Kia OneApp ② 월간 분석 리포트</div>
+<div class="slide">
+  <div class="slide-header">
+    <span class="slide-num">02</span>
+    <div class="slide-divider"></div>
+    <span class="slide-title">Kia OneApp KPI 체계 수립 &nbsp; ② &nbsp; 월간 분석 리포트</span>
+    <span class="slide-meta">이노션 · 2025.06 – 2025.08</span>
+  </div>
+  <div class="tool-bar">
+    <span class="tool-label">Tool</span>
+    <span class="tool-tag">GA4</span>
+    <span class="tool-tag">Looker Studio</span>
+    <span class="tool-tag">Spreadsheet</span>
+  </div>
+
+  <div class="body-2col">
+    <div class="col-left">
+      <div class="sec-label">월간 분석 프로세스</div>
+      <div class="icon-card">
+        <div style="background:var(--header);color:#FFF;border-radius:4px;padding:1px 7px;font-size:9px;font-weight:bold;min-width:18px;text-align:center;margin-top:1px;">1</div>
+        <div>
+          <div class="icon-card-title">가설 설정</div>
+          <div class="icon-card-desc">KPI 수치 기반 확인할 가설 설정 (예: 컴포넌트 배치 순서가 클릭에 영향을 주는가?)</div>
+        </div>
+      </div>
+      <div class="icon-card alt">
+        <div style="background:var(--header);color:#FFF;border-radius:4px;padding:1px 7px;font-size:9px;font-weight:bold;min-width:18px;text-align:center;margin-top:1px;">2</div>
+        <div>
+          <div class="icon-card-title">GA4 데이터 추출 & 분석</div>
+          <div class="icon-card-desc">대시보드 및 GA4 직접 추출을 통해 가설 검증에 필요한 데이터 수집·분석</div>
+        </div>
+      </div>
+      <div class="icon-card">
+        <div style="background:var(--header);color:#FFF;border-radius:4px;padding:1px 7px;font-size:9px;font-weight:bold;min-width:18px;text-align:center;margin-top:1px;">3</div>
+        <div>
+          <div class="icon-card-title">핵심 인사이트 도출</div>
+          <div class="icon-card-desc">분석 결과 기반으로 원메세지 인사이트 도출 및 개선 방향 제안</div>
+        </div>
+      </div>
+      <div class="icon-card alt">
+        <div style="background:var(--header);color:#FFF;border-radius:4px;padding:1px 7px;font-size:9px;font-weight:bold;min-width:18px;text-align:center;margin-top:1px;">4</div>
+        <div>
+          <div class="icon-card-title">월간 리포트 작성 & 배포</div>
+          <div class="icon-card-desc">타팀 협업으로 광고·UX 영역 합산, 리포트 자동화 후 월간 배포</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-right">
+      <div class="sec-label">핵심 인사이트</div>
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-num">38.4%</div>
+          <div class="insight-body">
+            <div class="insight-tag">클릭 점유율 1위</div>
+            <div class="insight-desc">기아샵이 배치 순위와 무관하게 가장 높은 클릭을 기록 → 컴포넌트 우선순위 재정립 제안</div>
+          </div>
+        </div>
+        <div class="insight-footer">→ 데이터 기반 앱 개선 액션 연결 완료</div>
+      </div>
+
+      <div class="insight-card">
+        <div class="insight-top">
+          <div class="insight-num" style="background:var(--text-mid);">90%+</div>
+          <div class="insight-body">
+            <div class="insight-tag">업데이트 버튼 집중</div>
+            <div class="insight-desc">전체 클릭 90%+ 업데이트 버튼 집중, 앱 내 연결 액션 없음 확인 → A/B 테스트 제안으로 연결</div>
+          </div>
+        </div>
+        <div class="insight-footer">→ 데이터 기반 앱 개선 액션 연결 완료</div>
+      </div>
+
+      <div class="sec-label" style="margin-top:6px;">월간 리포트</div>
+      <div class="ss-box" style="min-height:90px;">📸 월간 분석 리포트 스크린샷 첨부</div>
+    </div>
+  </div>
+</div><!-- /slide -->
+
+
+<!-- ============================================================
+     SLIDE 05 · CJENM 데이터 이슈 원인 분석 및 해결
+     수정: .cj-text 내 텍스트, result-num 수치
+     ============================================================ -->
+<div class="slide-label">SLIDE 05 / CJENM 데이터 이슈 원인 분석 및 해결</div>
+<div class="slide">
+  <div class="slide-header">
+    <span class="slide-num">03</span>
+    <div class="slide-divider"></div>
+    <span class="slide-title">CJENM &nbsp; 데이터 이슈 원인 분석 및 해결</span>
+    <span class="slide-meta">CJENM (골든플래닛) · 2025.02</span>
+  </div>
+  <div class="tool-bar">
+    <span class="tool-label">Tool</span>
+    <span class="tool-tag">GA4 360</span>
+    <span class="tool-tag">BigQuery</span>
+    <span class="tool-tag">SQL</span>
+  </div>
+
+  <div class="body-3col">
+
+    <!-- ① 문제 정의 & 가설 -->
+    <div class="col-left" style="border-right:1px solid var(--border);">
+      <div class="col-header" style="background:var(--header);">① 문제 정의 &amp; 가설</div>
+
+      <div class="cj-section-label">현상</div>
+      <div class="cj-text">BigQuery 내 entrance=1일 때 page_referrer에 'onstyle'이 포함된 값이 조회되는 이슈 발생. SQL 쿼리 기반 원인 분석 요청.</div>
+
+      <hr class="cj-divider">
+
+      <div class="cj-section-label">가설</div>
+      <div class="cj-text">
+        <b>A.</b> 새 세션 시작 시 page_referrer 값이 적재되는 것 아닐까?<br><br>
+        <b>B.</b> page_referrer 내 'onstyle' 포함 URL에 구조적 특이점이 있는 것 아닐까?
+      </div>
+    </div><!-- /col-left -->
+
+    <!-- ② 분석 과정 -->
+    <div class="col-mid">
+      <div class="col-header" style="background:var(--text-mid);">② 분석 과정</div>
+
+      <div>
+        <span class="cj-badge" style="background:var(--header);">A 검증</span>
+        <span class="cj-step-title">세션ID 기반 검증</span>
+        <div class="cj-step-desc">세션ID 추가하여 onstyle 페이지 신규 세션 시작 시 page_referrer 적재 여부 확인 → 해당 문의에는 미적용. 가설 A 기각</div>
+      </div>
+      <hr class="cj-divider">
+      <div>
+        <span class="cj-badge" style="background:var(--text-mid);">B 검증</span>
+        <span class="cj-step-title">URL 특이점 SQL 분석</span>
+        <div class="cj-step-desc">page_referrer 내 URL 구조 분석 → cjonstyle + /c/inflow/ 포함 URL이 전체 page_referrer 수의 약 90% 차지. 구조적 패턴 발견</div>
+      </div>
+      <hr class="cj-divider">
+      <div>
+        <span class="cj-badge" style="background:var(--issue-border);">원인</span>
+        <span class="cj-step-title" style="color:var(--issue-border);">GTM 설정 문제 확인</span>
+        <div class="cj-step-desc">/c/inflow/ 경로가 GTM 내 page_view 미전송으로 설정됨 → page_referrer 값 수집 원인으로 최종 확정 및 해결</div>
+      </div>
+      <hr class="cj-divider">
+      <div class="sec-label">SQL 쿼리 화면</div>
+      <div class="ss-box" style="min-height:80px;">📸 분석 SQL 쿼리 화면 스크린샷 첨부</div>
+    </div><!-- /col-mid -->
+
+    <!-- ③ 결과 / 해결 -->
+    <div class="col-right-3">
+      <div class="col-header" style="background:var(--issue-border);">③ 결과 / 해결</div>
+
+      <div class="cj-section-label">수치 근거</div>
+      <div class="cj-text">BigQuery SQL로 전체 page_referrer 수를 추출하여 URL 구조별로 분류한 결과, cjonstyle + /c/inflow/ 패턴이 전체의 약 90%를 차지함. 잔여 10%는 정상적인 외부 referrer.</div>
+
+      <!-- 수치 박스 — 크기 줄이고 근거 명시 -->
+      <div class="result-num-box">
+        <div class="result-num">90%</div>
+        <div class="result-num-label">이슈 패턴 비율</div>
+        <div class="result-num-basis">전체 page_referrer 수 대비<br>cjonstyle + /c/inflow/ 포함 URL 비율</div>
+      </div>
+
+      <hr class="cj-divider">
+
+      <div class="cj-section-label">해결 및 성과</div>
+      <div class="cj-text">/c/inflow/ 경로가 GTM 내 page_view 미전송으로 설정되어 있어 직전 페이지 URL이 page_referrer로 수집되는 구조임을 확인, 설정 수정 완료.</div>
+      <div class="cj-text">서버 간 데이터 전송 문제 신속 해결 → 데이터 수집 안정성 확보</div>
+
+      <div class="sec-label" style="margin-top:6px;">분석 결과 화면</div>
+      <div class="ss-box" style="min-height:80px;">📸 분석 결과 화면 스크린샷 첨부</div>
+    </div><!-- /col-right-3 -->
+
+  </div>
+</div><!-- /slide -->
+
+</body>
+</html>
